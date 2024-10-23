@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="/Users/shubham.gupta/Desktop/SeleniumBuddy">
+        <classes>
+            <class name="org.example.ContactUsPageTest">
+                <methods>
+                    <include name="verifyContactUsPageTitle"/>
+                    <include name="verifyHeadingText"/>
+                </methods>
+            </class>
+            <class name="org.example.HomePageTest">
+                <methods>
+                    <include name="verifyHomePageTitle"/>
+                    <include name="navigateToContactUsPage"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
