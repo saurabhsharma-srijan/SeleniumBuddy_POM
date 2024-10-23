@@ -8,7 +8,7 @@ public class ContactUsPageTest extends BaseTest {
     @Test
     public void verifyContactUsPageTitle() {
         HomePage homePage = new HomePage(driver);
-        homePage.clickContactUs();
+        homePage.displayContactUs();
 
         ContactUsPage contactUsPage = new ContactUsPage(driver);
         String title = contactUsPage.getContactUsPageTitle();
@@ -18,7 +18,7 @@ public class ContactUsPageTest extends BaseTest {
     @Test
     public void verifyHeadingText() {
         HomePage homePage = new HomePage(driver);
-        homePage.clickContactUs();
+        homePage.displayContactUs();
 
         ContactUsPage contactUsPage = new ContactUsPage(driver);
         String heading = contactUsPage.getHeadingText();

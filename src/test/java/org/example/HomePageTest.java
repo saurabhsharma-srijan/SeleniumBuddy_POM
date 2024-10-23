@@ -9,13 +9,13 @@ public class HomePageTest extends BaseTest {
         HomePage homePage = new HomePage(driver);
         String title = homePage.getHomePageTitle();
         System.out.println(title);
-        Assert.assertEquals(title, "End-to-End Supply Chain Orchestration with a Single Integration | TraceLink");
+        Assert.assertEquals(title, "A place to practice your automation skills!");
     }
 
     @Test
     public void navigateToContactUsPage() {
         HomePage homePage = new HomePage(driver);
-        homePage.clickContactUs();
+        homePage.displayContactUs();
     }
 
 }

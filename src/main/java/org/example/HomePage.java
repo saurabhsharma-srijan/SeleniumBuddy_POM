@@ -10,11 +10,11 @@ public class HomePage {
     }
 
     // Locators
-    By contactUsLink = By.xpath("//a[@class='btn btn--primary-dark btn--small']");
+    By contactUsLink = By.xpath("//h2[normalize-space()='Contact Us']");
 
     // Methods
-    public void clickContactUs() {
-        driver.findElement(contactUsLink).click();
+    public void displayContactUs() {
+        driver.findElement(contactUsLink).isDisplayed();
     }
 
     public String getHomePageTitle() {

@@ -13,7 +13,7 @@ public class BaseTest {
         WebDriverManager.firefoxdriver().setup();
         driver = new FirefoxDriver();
         driver.manage().window().maximize();
-        driver.get("https://www.tracelink.com");
+        driver.get("https://automationteststore.com/");
     }
 
     @AfterTest
