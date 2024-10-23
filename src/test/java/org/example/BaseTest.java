@@ -2,23 +2,52 @@ package org.example;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.*;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 public class BaseTest {
     WebDriver driver;
     public ExtentReports extent;
     public ExtentTest test;
+    public static void flushDirectory(String dirPath) {
+        Path directory = Paths.get(dirPath);
+
+        // Check if the directory exists
+        if (Files.exists(directory) && Files.isDirectory(directory)) {
+            try {
+                // Delete all files and subdirectories
+                Files.walk(directory)
+                        .sorted((path1, path2) -> path2.compareTo(path1)) // Sort in reverse order to delete subdirectories first
+                        .forEach(path -> {
+                            try {
+                                Files.delete(path);
+                            } catch (IOException e) {
+                                System.err.println("Failed to delete " + path + ": " + e.getMessage());
+                            }
+                        });
+                System.out.println("Directory flushed successfully: " + dirPath);
+            } catch (IOException e) {
+                System.err.println("Error while flushing directory: " + e.getMessage());
+            }
+        } else {
+            System.out.println("Directory does not exist: " + dirPath);
+        }
+    }
 
     @BeforeSuite
-    public void setupExtent() {
-        ExtentSparkReporter spark = new ExtentSparkReporter("target/ExtentReport.html");
-        extent = new ExtentReports();
-        extent.attachReporter(spark);
+       public void setupExtent()
+    {
+        flushDirectory("allure-results");
+        flushDirectory("allure-report");
+
     }
 
 
@@ -49,8 +78,4 @@ public class BaseTest {
         }
     }
 
-    @AfterSuite
-    public void tearDownExtent() {
-        extent.flush(); // Make sure to flush to write results to the report
-    }
 }
