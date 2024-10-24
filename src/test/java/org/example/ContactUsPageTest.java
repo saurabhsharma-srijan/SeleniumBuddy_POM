@@ -4,6 +4,7 @@ import org.testng.annotations.Test;
 
 
 public class ContactUsPageTest extends BaseTest {
+	
     @Test
     public void verifyContactUsPageTitle() {
         HomePage homePage = new HomePage(driver);

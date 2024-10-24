@@ -4,6 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class HomePageTest extends BaseTest {
+	
     @Test
     public void verifyHomePageTitle() {
         HomePage homePage = new HomePage(driver);
