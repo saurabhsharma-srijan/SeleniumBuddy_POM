@@ -17,7 +17,6 @@ public class HomePageTest extends BaseTest {
     public void navigateToContactUsPage() {
         HomePage homePage = new HomePage(driver);
         homePage.displayContactUs();
-
     }
 
 }
